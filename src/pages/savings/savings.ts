@@ -17,21 +17,15 @@ import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 })
 export class SavingsPage {
   listItems: FirebaseListObservable<any[]>;
-  newItem = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
     this.listItems = this.firebaseProvider.getDataList();
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SavingsPage');
   }
-  
-  addItem() {
-    this.firebaseProvider.addItem(this.newItem);
-  }
- 
+
   removeItem(id) {
     this.firebaseProvider.removeItem(id);
   }
