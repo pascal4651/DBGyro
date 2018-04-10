@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DBMeter } from '@ionic-native/db-meter';
+import { BatteryStatus } from '@ionic-native/battery-status';
 import * as moment from 'moment';
 import { DecimalPipe } from '@angular/common';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 /**
- * Generated class for the DbmeterPage page.
+ * Generated class for the BatteryPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -15,13 +15,14 @@ import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 @IonicPage()
 @Component({
-  selector: 'page-dbmeter',
-  templateUrl: 'dbmeter.html',
-  providers: [DBMeter, DecimalPipe]
+  selector: 'page-battery',
+  templateUrl: 'battery.html',
+  providers: [BatteryStatus, DecimalPipe]
 })
-export class DbmeterPage {
+export class BatteryPage {
 
-  private currentAmplitude:any;
+  private currentLevel:any;
+  private isConnected:boolean;
   private myDate:string;
   private timer:any;
   private subscription:any;
@@ -33,23 +34,21 @@ export class DbmeterPage {
   }
   newString = '';
   newDbString = '';
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dbMeter: DBMeter,
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private batteryStatus: BatteryStatus,
     private decimalPipe: DecimalPipe, public firebaseProvider: FirebaseProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DbmeterPage');
+    console.log('ionViewDidLoad BatteryPage');
 
-    //this.subscription = this.dbMeter.start().subscribe(data => this.currentAmplitude = this.decimalPipe.transform(data,'1.2-2'));
-    
-    this.subscription = this.dbMeter.start().subscribe(data =>
-      this.currentAmplitude = data);
+    const subscription = this.batteryStatus.onChange().subscribe(status => {
+      console.log(status.level, status.isPlugged);
+   });
     
     this.timer = setInterval(() => {
       let now = moment();
       this.myDate = moment(now.format(), moment.ISO_8601).format();
-      //this.myDate = new Date().toISOString();
     }, 500);
   }
 
@@ -63,8 +62,8 @@ export class DbmeterPage {
   addItem() {
     this.newItem = {
       Datetime: this.myDate,
-      Type : "DBMeter",
-      Data: this.decimalPipe.transform(this.currentAmplitude,'1.2-2') + "dB",
+      Type : "Battery",
+      Data: this.decimalPipe.transform(this.currentLevel,'1.2-2'),
       Discription: this.newString,
     }
     this.firebaseProvider.addItem(this.newItem);

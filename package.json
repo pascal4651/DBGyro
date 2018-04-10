@@ -21,6 +21,7 @@
     "@angular/http": "5.2.9",
     "@angular/platform-browser": "5.2.9",
     "@angular/platform-browser-dynamic": "5.2.9",
+    "@ionic-native/battery-status": "^4.7.0",
     "@ionic-native/core": "4.6.0",
     "@ionic-native/db-meter": "^4.6.0",
     "@ionic-native/gyroscope": "^4.6.0",
@@ -31,6 +32,7 @@
     "angularfire2": "^5.0.0-rc.6",
     "cordova-android": "7.0.0",
     "cordova-browser": "5.0.3",
+    "cordova-plugin-battery-status": "^2.0.1",
     "cordova-plugin-dbmeter": "^2.1.0",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-gyroscope": "^0.1.4",
@@ -62,7 +64,8 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-gyroscope": {}
+      "cordova-plugin-gyroscope": {},
+      "cordova-plugin-battery-status": {}
     },
     "platforms": [
       "android",

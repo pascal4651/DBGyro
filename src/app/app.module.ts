@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DbmeterPage } from '../pages/dbmeter/dbmeter';
 import { GyroPage } from '../pages/gyro/gyro';
 import { SavingsPage } from '../pages/savings/savings';
+import { BatteryPage } from '../pages/battery/battery';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +39,8 @@ var config = {
     TabsPage,
     DbmeterPage,
     GyroPage,
-    SavingsPage
+    SavingsPage,
+    BatteryPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ var config = {
     TabsPage,
     DbmeterPage,
     GyroPage,
-    SavingsPage
+    SavingsPage,
+    BatteryPage
   ],
   providers: [
     StatusBar,

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DbmeterPage } from '../dbmeter/dbmeter';
 import { GyroPage } from '../gyro/gyro';
+import { BatteryPage } from '../battery/battery';
 
 @Component({
   selector: 'page-home',
@@ -13,18 +14,15 @@ export class HomePage {
 
   }
 
-  /*
-  itemTapped(event, item) {
-    this.navCtrl.push(DbmeterPage, {
-      item: item
-    });
-  }*/
-
   dbmeterClick(){
     this.navCtrl.push(DbmeterPage);
   }
 
   gyroClick(){
     this.navCtrl.push(GyroPage);
+  }
+
+  batteryClickk(){
+    this.navCtrl.push(BatteryPage);
   }
 }

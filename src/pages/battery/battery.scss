@@ -1,0 +1,26 @@
+page-battery {
+    ion-input{
+        border-radius: 10px;
+        background-color:yellow;
+        font-size:24px;
+      }
+
+    .level{
+        color:darkBlue;
+        font-size:50px
+    }
+
+    ion-datetime{
+        color:darkGreen;
+        font-size:24px
+    }
+
+    h4{
+        text-decoration: underline;
+    }
+
+    .charging{
+        color:rgb(1, 1, 48);
+        font-size:20px
+    }
+}
