@@ -68,7 +68,7 @@ export class DbmeterPage {
     this.newItem = {
       Datetime: this.myDate,
       Type : "DBMeter",
-      Data: this.currentAmplitude,
+      Data: this.decimalPipe.transform(this.currentAmplitude,'1.2-2') + "dB",
       Discription: this.newString,
       
       
