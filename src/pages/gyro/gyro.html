@@ -14,11 +14,20 @@
 
 
 <ion-content padding>
+    <div text-center align-items-center>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm:ss" [(ngModel)]="myDate"></ion-datetime>
+      </div>
 
   <label  style="color:darkBlue; font-size:50px">{{gyroOrientX | number:'1.2-2'}} X</label>
   <br/>
   <label  style="color:darkBlue; font-size:50px">{{gyroOrientY | number:'1.2-2'}} Y</label>
   <br/>
   <label  style="color:darkBlue; font-size:50px">{{gyroOrientZ | number:'1.2-2'}} Z</label>
+  <br/>
+  <ion-input type="text"  maxlength="10"  [(ngModel)]="newString"  placeholder="text" value=""></ion-input>
+  <br>
+  <div text-center align-items-center>
+    <button ion-button style="width:60%" color="primary" round (click)="addItem()">SAVE</button>
+  </div>
 
 </ion-content>

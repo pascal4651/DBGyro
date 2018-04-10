@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { DbmeterPage } from '../dbmeter/dbmeter';
 import { GyroPage } from '../gyro/gyro';
 import { BatteryPage } from '../battery/battery';
+import { TtsPage } from '../tts/tts';
 
 @Component({
   selector: 'page-home',
@@ -24,5 +25,9 @@ export class HomePage {
 
   batteryClickk(){
     this.navCtrl.push(BatteryPage);
+  }
+
+  ttsClick(){
+    this.navCtrl.push(TtsPage);
   }
 }
