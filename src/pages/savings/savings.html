@@ -10,6 +10,7 @@
     <ion-title>savings</ion-title>
     <button ion-button color="danger" icon-only (click)="currentType = 'DBMeter'"><ion-icon name="trash"></ion-icon></button>
     <button ion-button color="danger" icon-only (click)="currentType = 'Gyroscope'"><ion-icon name="trash"></ion-icon></button>
+    <button ion-button color="danger" icon-only (click)="currentType = ' '"><ion-icon name="trash"></ion-icon></button>
   </ion-navbar>
 
 </ion-header>
@@ -19,7 +20,7 @@
   <ion-list>
       <button ion-button color="danger" icon-only (click)="removeItems()"><ion-icon name="trash"></ion-icon></button>
     <ion-item-sliding *ngFor="let item of listItems | async">
-      <ion-item *ngIf="item.Type == currentType">
+      <ion-item *ngIf="item.Type != currentType">
         {{ item.Datetime }}
         
         <br/>
