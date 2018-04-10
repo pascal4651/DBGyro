@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
+import { forEach } from '@firebase/util';
 
 /**
  * Generated class for the SavingsPage page.
@@ -28,5 +29,8 @@ export class SavingsPage {
 
   removeItem(id) {
     this.firebaseProvider.removeItem(id);
+  }
+  removeItems(){
+    
   }
 }
