@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { forEach } from '@firebase/util';
+import { NgIf } from '@angular/common';
+import { Gyroscope } from '@ionic-native/gyroscope';
 
 /**
  * Generated class for the SavingsPage page.
@@ -16,8 +18,14 @@ import { forEach } from '@firebase/util';
   selector: 'page-savings',
   templateUrl: 'savings.html',
 })
+
+
 export class SavingsPage {
   listItems: FirebaseListObservable<any[]>;
+
+  elementdata:any;
+currentType = "Gyroscope";
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
     this.listItems = this.firebaseProvider.getDataList();
@@ -32,5 +40,12 @@ export class SavingsPage {
   }
   removeItems(){
     
+    let array = [this.firebaseProvider.getDataList()];
+    array.forEach(element => {
+     
+        this.firebaseProvider.removeItem(element);
+    
+    
+    });
   }
 }

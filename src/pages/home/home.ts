@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DbmeterPage } from '../dbmeter/dbmeter';
 import { GyroPage } from '../gyro/gyro';
+import { TtsPage } from '../tts/tts';
 
 @Component({
   selector: 'page-home',
@@ -26,5 +27,8 @@ export class HomePage {
 
   gyroClick(){
     this.navCtrl.push(GyroPage);
+  }
+  ttsClick(){
+    this.navCtrl.push(TtsPage);
   }
 }
