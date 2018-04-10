@@ -26,7 +26,14 @@ export class DbmeterPage {
   private timer:any;
   private subscription:any;
   private level:any;
-  newItem = '';
+  newItem : {
+    Datetime:string,
+    Type:string,
+    Data:string,
+    Discription:string,
+  }
+  newString = '';
+  newDbString = '';
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private dbMeter: DBMeter,
     private decimalPipe: DecimalPipe, public firebaseProvider: FirebaseProvider) {
@@ -58,7 +65,14 @@ export class DbmeterPage {
   }
 
   addItem() {
-    this.newItem = this.myDate;
+    this.newItem = {
+      Datetime: this.myDate,
+      Type : "DBMeter",
+      Data: this.currentAmplitude,
+      Discription: this.newString,
+      
+      
+    }
     this.firebaseProvider.addItem(this.newItem);
   }
 }
