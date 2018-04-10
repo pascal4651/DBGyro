@@ -14,18 +14,23 @@
 
 
 <ion-content padding>
-  <ion-datetime style="color:darkGreen; font-size:24px" displayFormat="MMM DD, YYYY HH:mm:ss" [(ngModel)]="myDate"></ion-datetime>
-  <div></div>
-  <h3>CURRENT NOISE LEVEL:</h3>
-  <div></div>
   <div text-center align-items-center>
-    <label style="color:darkBlue; font-size:50px">{{currentAmplitude | number:'1.2-2'}} dB</label>
+    <ion-datetime displayFormat="MMM DD, YYYY HH:mm:ss" [(ngModel)]="myDate"></ion-datetime>
   </div>
-  <div style ="height:10px; width:30px; background-color:green">      </div>
-  <p></p>
-  <ion-input type="text" maxlength="10" placeholder="text" value="" style="background-color:yellow"></ion-input>
-  <div></div>
+  <hr>
+    <br>
   <div text-center align-items-center>
-    <button ion-button color="primary" round (click)="addItem()">SAVE</button>
+    <h3>CURRENT NOISE LEVEL:</h3>
+  </div>
+  <br>
+  <div text-center align-items-center>
+    <label>{{currentAmplitude | number:'1.2-2'}} dB</label>
+  </div>
+  <hr>
+  <br>
+  <ion-input type="text" maxlength="10" placeholder="text" value=""></ion-input>
+  <br>
+  <div text-center align-items-center>
+    <button ion-button style="width:60%" color="primary" round (click)="addItem()">SAVE</button>
   </div>
 </ion-content>
