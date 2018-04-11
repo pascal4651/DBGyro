@@ -8,39 +8,46 @@
 
   <ion-navbar>
     <ion-title>Savings</ion-title>
-    
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <button ion-button item-right color="danger" (click)="removeItems()">
-    <ion-icon name="trash" style="margin-right:5px"></ion-icon>
-    Delete all
-  </button>
-  <ion-select float-right [(ngModel)]="currentType">
-    <ion-option value='All'>Show all</ion-option>
-    <ion-option value='Battery'>Battery</ion-option>
-    <ion-option value='DBMeter'>DBMeter</ion-option>
-    <ion-option value='Gyroscope'>Gyroskope</ion-option>
-    <ion-option value='Tts'>Text to speech</ion-option>
-  </ion-select>
-  <ion-label style="text-decoration: underline" float-right>SENSOR</ion-label>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button item-right color="danger" (click)="removeItems()">
+          <ion-icon name="trash" style="margin-right:5px"></ion-icon>
+          Delete all
+        </button>
+        <ion-select style="width:100px;height: 40px;" float-right [(ngModel)]="currentType">
+          <ion-option value='All'>Show all</ion-option>
+          <ion-option value='Battery'>Battery</ion-option>
+          <ion-option value='DBMeter'>DBMeter</ion-option>
+          <ion-option value='Gyroscope'>Gyroskope</ion-option>
+          <ion-option value='Tts'>Text to speech</ion-option>
+        </ion-select>
+        <ion-label style="text-decoration: underline" float-right>SENSOR</ion-label>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <hr>
   <ion-list>
     <ion-item-sliding *ngFor="let item of listItems | async">
       <ion-item *ngIf="item.Type == currentType || currentType == 'All'">
         {{ item.Datetime }}
-        
-        <br/>
-        
-        {{ item.Type}}: {{ item.Data }}
-        <br/>
-                    {{ item.Discription }}
+
+        <br/> {{ item.Type}}: {{ item.Data }}
+        <br/> {{ item.Discription }}
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="danger" icon-only (click)="removeItem(item.$key)"><ion-icon name="trash"></ion-icon></button>
+        <button ion-button color="danger" icon-only (click)="removeItem(item.$key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

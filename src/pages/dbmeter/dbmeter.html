@@ -14,9 +14,16 @@
 
 
 <ion-content padding>
-  <div text-center align-items-center>
-    <ion-datetime displayFormat="MMM DD, YYYY HH:mm:ss" [(ngModel)]="myDate"></ion-datetime>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <div text-center align-items-center>
+              <ion-datetime displayFormat="MMM DD, YYYY HH:mm:ss" [(ngModel)]="myDate"></ion-datetime>
+            </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
   <hr>
     <br>
   <div text-center align-items-center>
