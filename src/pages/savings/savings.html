@@ -7,20 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>savings</ion-title>
+    <ion-title>Savings</ion-title>
     <button ion-button color="danger" icon-only (click)="currentType = 'DBMeter'"><ion-icon name="trash"></ion-icon></button>
     <button ion-button color="danger" icon-only (click)="currentType = 'Gyroscope'"><ion-icon name="trash"></ion-icon></button>
-    <button ion-button color="danger" icon-only (click)="currentType = ' '"><ion-icon name="trash"></ion-icon></button>
+    <button ion-button color="danger" icon-only (click)="currentType = 'All'"><ion-icon name="trash"></ion-icon></button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <button ion-button item-right color="danger" (click)="removeItems()">
+    <ion-icon name="trash" style="margin-right:5px"></ion-icon>
+    Delete all
+  </button>
+  <ion-select float-right [(ngModel)]="currentType">
+    <ion-option value='All'>Show all</ion-option>
+    <ion-option value='Battery'>Battery</ion-option>
+    <ion-option value='DBMeter'>DBMeter</ion-option>
+    <ion-option value='Gyroscope'>Gyroskope</ion-option>
+  </ion-select>
+  <ion-label style="text-decoration: underline" float-right>SENSOR</ion-label>
+  <hr>
   <ion-list>
-      <button ion-button color="danger" icon-only (click)="removeItems()"><ion-icon name="trash"></ion-icon></button>
     <ion-item-sliding *ngFor="let item of listItems | async">
-      <ion-item *ngIf="item.Type != currentType">
+      <ion-item *ngIf="item.Type == currentType || currentType == 'All'">
         {{ item.Datetime }}
         
         <br/>

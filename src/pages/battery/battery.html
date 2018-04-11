@@ -24,11 +24,11 @@
   </div>
   <br>
   <div text-center align-items-center>
-    <label class="level">{{currentLevel | number:'1.2-2'}} dB</label>
+    <label class="level">{{currentLevel}}%</label>
   </div>
   <br>
   <div text-center align-items-center>
-    <label class="charging">CHARGING: {{currentLevel}}</label>
+    <label class="charging">CHARGING: <strong>{{isPlugged ? 'YES' : 'NO'}}</strong></label>
   </div>
     <br>
   <hr>

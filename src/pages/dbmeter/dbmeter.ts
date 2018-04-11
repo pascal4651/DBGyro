@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { DBMeter } from '@ionic-native/db-meter';
 import * as moment from 'moment';
 import { DecimalPipe } from '@angular/common';
@@ -25,17 +25,18 @@ export class DbmeterPage {
   private myDate:string;
   private timer:any;
   private subscription:any;
-  newItem : {
+  private newItem : {
     Datetime:string,
     Type:string,
     Data:string,
     Discription:string,
   }
-  newString = '';
-  newDbString = '';
+  private newString = '';
+  private newDbString = '';
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private dbMeter: DBMeter,
-    private decimalPipe: DecimalPipe, public firebaseProvider: FirebaseProvider) {
+    private decimalPipe: DecimalPipe, private firebaseProvider: FirebaseProvider,
+    private toastController: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -68,5 +69,10 @@ export class DbmeterPage {
       Discription: this.newString,
     }
     this.firebaseProvider.addItem(this.newItem);
+    this.newString='';
+    this.toastController.create({
+      message: 'Data is saved',
+      duration: 2000
+    }).present();
   }
 }

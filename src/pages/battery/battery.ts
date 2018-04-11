@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { BatteryStatus } from '@ionic-native/battery-status';
 import * as moment from 'moment';
 import { DecimalPipe } from '@angular/common';
@@ -22,28 +22,31 @@ import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 export class BatteryPage {
 
   private currentLevel:any;
-  private isConnected:boolean;
+  private isPlugged:boolean;
   private myDate:string;
   private timer:any;
   private subscription:any;
-  newItem : {
+  private newItem : {
     Datetime:string,
     Type:string,
     Data:string,
     Discription:string,
   }
-  newString = '';
-  newDbString = '';
+  private newString = '';
+  private newDbString = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private batteryStatus: BatteryStatus,
-    private decimalPipe: DecimalPipe, public firebaseProvider: FirebaseProvider) {
+    private decimalPipe: DecimalPipe, public firebaseProvider: FirebaseProvider,
+    private toastController: ToastController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BatteryPage');
 
-    const subscription = this.batteryStatus.onChange().subscribe(status => {
-      console.log(status.level, status.isPlugged);
+    this.subscription = this.batteryStatus.onChange().subscribe(status => {
+      this.currentLevel = status.level;
+      this.isPlugged = status.isPlugged;
+      //console.log(status.level, status.isPlugged);
    });
     
     this.timer = setInterval(() => {
@@ -53,7 +56,7 @@ export class BatteryPage {
   }
 
   ionViewWillLeave(){
-    console.log('ionViewWilLeave DbmeterPage');
+    console.log('ionViewWilLeave BatteryPage');
   
     clearInterval(this.timer);
     this.subscription.unsubscribe();
@@ -63,9 +66,14 @@ export class BatteryPage {
     this.newItem = {
       Datetime: this.myDate,
       Type : "Battery",
-      Data: this.decimalPipe.transform(this.currentLevel,'1.2-2'),
+      Data: this.currentLevel + "% " + (this.isPlugged?"Plugged":"Not plugged"),
       Discription: this.newString,
     }
     this.firebaseProvider.addItem(this.newItem);
+    this.newString='';
+    this.toastController.create({
+      message: 'Data is saved',
+      duration: 2000
+    }).present();
   }
 }
