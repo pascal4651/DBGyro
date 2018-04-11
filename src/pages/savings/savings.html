@@ -8,9 +8,7 @@
 
   <ion-navbar>
     <ion-title>Savings</ion-title>
-    <button ion-button color="danger" icon-only (click)="currentType = 'DBMeter'"><ion-icon name="trash"></ion-icon></button>
-    <button ion-button color="danger" icon-only (click)="currentType = 'Gyroscope'"><ion-icon name="trash"></ion-icon></button>
-    <button ion-button color="danger" icon-only (click)="currentType = 'All'"><ion-icon name="trash"></ion-icon></button>
+    
   </ion-navbar>
 
 </ion-header>
@@ -26,6 +24,7 @@
     <ion-option value='Battery'>Battery</ion-option>
     <ion-option value='DBMeter'>DBMeter</ion-option>
     <ion-option value='Gyroscope'>Gyroskope</ion-option>
+    <ion-option value='Tts'>Text to speech</ion-option>
   </ion-select>
   <ion-label style="text-decoration: underline" float-right>SENSOR</ion-label>
   <hr>

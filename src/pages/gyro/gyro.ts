@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope';
 import * as moment from 'moment';
 import { DecimalPipe } from '@angular/common';
@@ -38,7 +38,7 @@ export class GyroPage {
   newGyroString = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private gyroscope: Gyroscope,
-    private decimalPipe: DecimalPipe, public firebaseProvider: FirebaseProvider) {
+    private decimalPipe: DecimalPipe, public firebaseProvider: FirebaseProvider,private toastController: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -74,14 +74,19 @@ export class GyroPage {
       Type : "Gyroscope",
       Data: "X: " + this.decimalPipe.transform(this.gyroOrientX,'1.2-2')
         + " Y: " + this.decimalPipe.transform(this.gyroOrientY,'1.2-2')
-       + " Z: " +this.decimalPipe.transform(this.gyroOrientZ,'1.2-2'),
+       + " Z: " + this.decimalPipe.transform(this.gyroOrientZ,'1.2-2'),
       Discription: this.newString,
       
       
     }
     this.firebaseProvider.addItem(this.newItem);
-  }
+    this.newString='';
+    this.toastController.create({
+      message: 'Data is saved',
+      duration: 2000
+    }).present();
 
   }
 
 
+}

@@ -24,7 +24,7 @@ export class SavingsPage {
   listItems: FirebaseListObservable<any[]>;
 
   elementdata:any;
-currentType = "Gyroscope";
+currentType = "All";
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
