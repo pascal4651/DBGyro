@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tts</ion-title>
+    <ion-title>Text to speech</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,6 +17,7 @@
     <ion-input type="text"  [(ngModel)]="ttsString"  placeholder="text" value=""></ion-input>
     <br>
     <div text-center align-items-center>
-      <button ion-button style="width:60%" color="primary" round (click)="ttsStart()">SAVE</button>
+      <button ion-button style="width:45%;float:left" color="primary" round (click)="ttsStart()"><ion-icon name="play" item-left></ion-icon></button>
+      <button ion-button style="width:45%;float:right" color="primary" round (click)="ttsStartogGem()"><ion-icon name="cloud" item-left></ion-icon></button>
     </div>
 </ion-content>
