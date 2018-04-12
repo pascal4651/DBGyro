@@ -22,15 +22,13 @@
         </button>
       </ion-col>
       <ion-col>
-        <ion-select style="width:100px;height: 40px;" float-right [(ngModel)]="currentType">
+        <ion-select style="max-width:100%" [(ngModel)]="currentType">
           <ion-option value='All'>Show all</ion-option>
           <ion-option value='Battery'>Battery</ion-option>
           <ion-option value='DBMeter'>DBMeter</ion-option>
           <ion-option value='Gyroscope'>Gyroskope</ion-option>
           <ion-option value='Tts'>Text to speech</ion-option>
         </ion-select>
-        <ion-label style="text-decoration: underline" float-right>SENSOoR</ion-label>
-
       </ion-col>
     </ion-row>
   </ion-grid>
